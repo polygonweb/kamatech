@@ -1,6 +1,7 @@
 var gulp = require('gulp');
 var imagemin = require('gulp-imagemin');
 var newer = require('gulp-newer');
+var pug = require('gulp-pug');
 var postcss = require('gulp-postcss');
 var plumber = require('gulp-plumber');
 var include = require('gulp-include');
@@ -48,6 +49,10 @@ const config = {
 gulp.task('views', function() {
     return gulp.src(config.src.views)
         .pipe(plumberHandler())
+        .pipe(pug({
+            pretty: '\t',
+            locals: {}
+        }))
         .pipe(gulp.dest(config.dest.views))
 });
 
