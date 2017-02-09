@@ -1,12 +1,102 @@
+include partials/data
+include partials/mixins
+
 doctype html
 html(lang="ru")
-head
-	meta(charset="utf-8")
-	meta(http-equiv="X-UA-Compatible", content="IE=edge")
-	meta(name="viewport", content="width=device-width, shrink-to-fit=no")
-	meta(name="format-detection" content="telephone=no")
-	meta(name="format-detection" content="address=no")
-	link(rel="stylesheet", href="assets/css/main.css")
-	title Каматех
-body
-	script(async, src="assets/js/scripts.js")
+	head
+		meta(charset="utf-8")
+		meta(http-equiv="X-UA-Compatible", content="IE=edge")
+		meta(name="viewport", content="width=device-width, initial-scale=1, user-scalable=no, shrink-to-fit=no")
+		meta(name="format-detection" content="telephone=no")
+		meta(name="format-detection" content="address=no")
+		link(rel="stylesheet", href="assets/css/main.css")
+		//- style
+		//- 	include ../../build/assets/css/main.css
+		title Каматех
+	body
+
+		include partials/defs.svg
+
+		section.head-section
+			//- .waves
+			.header
+				.waves(aria-hidden="true")
+				.main-container
+					.header__row.header__row_top.clearfix
+						h2.header__logo
+							a(href="/").logo
+								span.logo__big Кама
+								span.logo__small технологии
+								
+						.header__contacts
+							div
+								a.contacts-mail(href="mailto:info@kamatech.ru") info@kamatech.ru
+							div
+								a.contacts-tel(href="tel:+74991105705", title="Позвонить") +7 (499) 110 57 05
+
+					.header__row.header__row_middle.clearfix
+						.header__main-title
+							h1.main-title
+								span.main-title__part Разработка
+								span.main-title__part программного обеспечения
+								span.main-title__part для банковских и финансовых структур
+
+						.header__cta
+							.cta
+								.cta__text Оставьте заявку, наши специалисты свяжутся с Вами в ближайшее время
+								a.button.button_full.js-mail(href="#mail", data-modal)
+									span.button__text написать письмо
+
+			+mainnav(data.nav)
+
+		section.map-section
+			.map#map
+			footer.footer(style="position: absolute; bottom: 0; left: 0; right: 0")
+				.main-container.clearfix
+					.footer__part.footer__copy © 2017 КaмаТех
+					.footer__part.footer__address 
+						span 614007,
+						span Пермь, ул. 25 Октября, 101,
+						span 6 этаж
+						span (Бизнес-центр «Авангард»)
+
+		#mail.modal
+			.modal__tools.main-container
+				button(type="button").modal__close
+			.modal__inner
+				.main-container
+					.modal__dialog
+						form(action="/send/", method="POST").send-mail-form
+							.send-mail-form__body
+								h4.send-mail-form__title Написать письмо
+								label.field
+									span.field__label ваше имя
+									input(type="text", name="name", data-rules="notempty").text-input.field__input
+									
+								label.field
+									span.field__label email
+									input(type="email", name="email", data-rules="notempty, email").text-input.field__input
+									
+								label.field
+									span.field__label номер телефона
+									input(type="tel", name="tel", data-rules="notempty, tel").text-input.field__input
+									
+								label.field
+									span.field__label организация
+									input(type="text", name="company").text-input.field__input
+									
+								label.field
+									span.field__label текст сообщения
+									textarea(name="text", data-rules="notempty").text-input.field__input
+
+								button(type="submit").send-mail-form__button.button
+									span.button__text отправить
+									
+							.send-mail-form__message.send-mail-form__message_success
+								h4.send-mail-form__sub-title Спасибо!
+								div Мы свяжемся с Вами в ближайшее время
+							.send-mail-form__message.send-mail-form__message_error
+								h4.send-mail-form__sub-title Ошибка!
+								div Во время отправки формы произошла ошибка. Пожалуйста, попробуйте позднее.
+							
+		script(async, src="assets/js/scripts.js")

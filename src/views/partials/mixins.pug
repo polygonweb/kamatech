@@ -1,0 +1,14 @@
+mixin mainnav(data)
+	nav.menu
+		ul.menu-list.main-container
+			each item, index in data
+				li.menu-list__item
+					//- a.menu-item(href='#' + item.icon, title=item.title, class=(index === 0) ? 'menu-item_active' : '')
+					a.menu-item(href='#' + item.icon, title=item.title)
+						.menu-item__head
+							.menu-item__icon
+								svg.icon(class='icon_' + item.icon)
+									use(xlink:href='#icon-' + item.icon)
+							.menu-item__title #{item.title}
+						.menu-item__body
+							.menu-item__text.main-container #{item.text}

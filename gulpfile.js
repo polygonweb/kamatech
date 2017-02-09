@@ -1,5 +1,6 @@
 var gulp = require('gulp');
 var imagemin = require('gulp-imagemin');
+var uglify = require('gulp-uglify');
 var newer = require('gulp-newer');
 var pug = require('gulp-pug');
 var postcss = require('gulp-postcss');
@@ -23,7 +24,7 @@ const config = {
         styles: `src/styles/main.css`,
         scripts: `src/scripts/`,
         images: `src/images/**/*.*`,
-        fonts: `src/fonts/`
+        fonts: `src/fonts/**/*.*`
     },
     dest: {
         root: `build/`,
@@ -94,6 +95,7 @@ gulp.task('scripts', function () {
               __dirname + '/' + config.src.scripts
             ]
           }))
+        .pipe(uglify())
         .pipe(gulp.dest(config.dest.scripts));
 });
 
@@ -101,6 +103,31 @@ gulp.task('scripts', function () {
 /**
  * Обработка стилей
  */
+function sortMediaQueries(a, b) {
+	let A = a.replace(/\D/g, '');
+	let B = b.replace(/\D/g, '');
+
+	if (isMax(a) && isMax(b)) {
+		return B - A;
+	} else if (isMin(a) && isMin(b)) {
+		return A - B;
+	} else if (isMax(a) && isMin(b)) {
+		return 1;
+	} else if (isMin(a) && isMax(b)) {
+		return -1;
+	}
+
+	return 1;
+};
+
+function isMax(mq) {
+	return /max-width/.test(mq);
+}
+
+function isMin(mq) {
+	return /min-width/.test(mq);
+}
+
 var postcssplugins = [
     require('postcss-import')({
         path: ['node_modules']
@@ -108,7 +135,13 @@ var postcssplugins = [
     require('autoprefixer')({
         browsers: ['>1%', 'last 4 version']
     }),
-    require('css-mqpacker')
+    require('css-mqpacker')({
+        sort: sortMediaQueries
+    }),
+    require('postcss-csso')({
+        restructure: false,
+        comments: false
+    })
 ];
 
 gulp.task('styles', function () {

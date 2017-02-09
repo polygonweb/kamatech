@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1981 297.78" width="1981" height="298">
+  <defs>
+    <linearGradient id="wave-back-grad" x1="990.5" x2="990.5" y1="-1.44" y2="272.82" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#424242"/>
+      <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <path fill="url(#wave-back-grad)" d="M0 102l180-58 181 48 180-60 180 30 183-47.9 179 40.5 180-52.5 180 40.5 178-39L1800 39l181-39s-2 292 0 296S0 296 0 296z" opacity=".2"/>
+</svg>

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1997 376" width="1997" height="376">
+  <defs>
+    <linearGradient id="wave-front-grad" x1="998.5" x2="998.5" y1="39.57" y2="238.82" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#424242"/>
+      <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <path fill="url(#wave-front-grad)" d="M0 75c5 2 183 59 183 59l181.12-3.91L543 60l184.1 43.09 172.49-13.5L1085 25.1 1275 72l166-.41 181-25.5L1802 0l195 31-30 345L3 371z" opacity=".2"/>
+</svg>

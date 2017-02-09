@@ -8,6 +8,7 @@
   "author": "Alexey Buzmakov",
   "dependencies": {
     "dom4": "^1.8.3",
+    "fontfaceobserver": "^2.0.8",
     "normalize.css": "^5.0.0"
   },
   "devDependencies": {
@@ -23,6 +24,8 @@
     "gulp-postcss": "^6.3.0",
     "gulp-pug": "^3.2.0",
     "gulp-sourcemaps": "^2.4.1",
+    "gulp-uglify": "^2.0.1",
+    "postcss-csso": "^1.1.2",
     "postcss-import": "^9.1.0"
   }
 }
